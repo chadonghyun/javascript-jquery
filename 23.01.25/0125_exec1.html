@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <script src="./script/jquery-3.6.3.min.js"></script>
+  <style>
+    *{margin: 0px; padding: 0px;}
+    ul, li, ol{list-style: none;}
+    a{text-decoration: none; color: #333;}
+    body{
+      font-family: "맑은 고딕", Arial, sans-serif;
+      font-size: 12px;
+      color: #333;
+    }
+    .slide{
+      width: 340px; height: 378px;
+      margin: 0px auto; 
+      position: relative;
+      overflow: hidden;
+      border: 2px solid#333;
+    }
+    .slide > ul > li img{display: block;}
+    i.fas{
+      position: absolute; bottom: 10px;
+      color: #fff;font-size: 24px;
+      cursor: pointer;
+    }
+    i.fa-angle-left{right: 100px;}
+    i.fa-angle-right{right: 70px;}
+    i.fa-play{right: 40px;}
+    i.fa-pause{right: 10px;}
+    .page{
+      position: absolute;
+      left: 10px; bottom: 10px;
+      color: #fff;
+      font-size: 18px;
+    }
+  </style>
+  <script>
+    $(function(){
+
+//1. 변수 선언
+let slide=$('.slide ul');
+let n=$('.page');
+let l_btn=$('i.fa-angle-left');
+let r_btn=$('i.fa-angle-right');
+let p_btn=$('i.fa-play');
+let s_btn=$('i.fa-pause');
+let img_h=$('.slide img').height();
+let num=1
+
+n.text(num+'/3');// 페이지 번호 출력하기
+
+
+//2. 1번 슬라이드의 앞에 3번을 배치한다.
+$('.slide ul > li:last-child').insertBefore('.slide ul > li:first-child');
+slide.css('margin-top',-img_h);
+
+//3. moveLeft 함수
+function moveLeft(){
+  slide.animate({'margin-top':-img_h*2},500,function(){
+    $('.slide ul > li:first-child').insertAfter('.slide ul > li:last-child');
+    slide.css('margin-top',-img_h);
+    if(num===3){
+      num=1;
+    }else{
+      num++;
+    }
+    n.text(num+'/3')
+  });
+}
+
+//4. moveLeft 함수
+function moveRight(){
+  slide.animate({'margin-top':'0px'},500,function(){
+    $('.slide ul > li:last-child').insertBefore('.slide ul > li:first-child');
+    slide.css('margin-top',-img_h);
+    if(num===1){
+      num=3;
+    }else{
+      num--;
+    }
+    n.text(num+'/3')
+  });
+}
+
+//5. 시간객체로 3초마다 함수 호출
+let Timer=setInterval(moveLeft,3000);
+
+//6. pause버튼 클릭시 시간을 제거하여 멈추게하고
+s_btn.click(function(){
+  clearInterval(Timer);
+});
+
+//7. play버튼 클릭시 시간을 생성하여 다시 움직이게 한다.
+p_btn.click(function(){
+  Timer=setInterval(moveLeft,3000);
+})
+
+//8. 좌, 우버튼을 클릭시 각각 해당하는 방향으로 움직이게 한다.
+l_btn.click(function(){
+  clearInterval(Timer);
+  moveLeft();
+});
+r_btn.click(function(){
+  clearInterval(Timer);
+  moveRight();
+});
+
+//9. 좌, 우버튼에 마우스를 아웃하면 다시 시간을 넣어서 자동으로 움직이게 한다.
+$('i.fa-angle-left, i.fa-angle-right').mouseleave(function(){
+  clearInterval(Timer);
+  Timer=setInterval(moveLeft,3000);
+});
+
+
+});
+  </script>
+</head>
+<body>
+  <h2>이미지 슬라이드 세로 방향</h2>
+    <article class="slide">
+    <ul>
+      <li><a href="#" title="배너1"><img src="./images01/01.jpg" alt="배너1"></a></li>
+      <li><a href="#" title="배너2"><img src="./images01/02.jpg" alt="배너2"></a></li>
+      <li><a href="#" title="배너3"><img src="./images01/03.jpg" alt="배너3"></a></li>
+    </ul>
+    <i class="fas fa-angle-left"></i>
+    <i class="fas fa-angle-right"></i>
+    <i class="fas fa-play"></i>
+    <i class="fas fa-pause"></i>
+    <span class="page">&nbsp;</span>
+  </article>
+</body>
+</html>

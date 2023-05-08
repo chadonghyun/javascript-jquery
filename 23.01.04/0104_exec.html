@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 문서객체모델_속성값을 활용한 상품 미리보기 콘텐츠</title>
+  <style>
+    *{margin: 0px; padding: 0px;}
+    li{list-style: none;}
+    a{text-decoration: none; color: #ccc;}
+    .product{display: flex;}
+    .photo > ul{
+      display: flex;
+    }
+    .photo > ul > li{
+      border-radius: 5px;
+    }
+    .photo > ul > li img{
+      width: 95px;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+    .txt{
+      margin-left: 50px;
+      position: relative;
+      width: 500px;
+    }
+    .txt h3{
+      width: 100%;
+      height: 140px;
+    }
+    .txt > h3 span:first-child{
+      color: red;
+      font-size: 16px;
+      float: left;
+    }
+    .txt > h3 span:nth-child(2){
+      float: right;
+      font-size: 16px;
+      color: #ccc;
+    }
+    .txt > h3 > p{
+      position: absolute;
+      top: 60px;
+      font-size: 20px
+    }
+    .line01{
+      width: 100%; height: 2px;
+      background: #ccc;
+      position: absolute;
+      margin: 40px 0px;
+    }
+    .txt > p:nth-child(2){font-size: 40px;}
+    .txt > p:nth-child(3){
+      font-size: 20px;
+      display: block;
+      color: #ccc;
+      text-decoration: line-through;
+      transform: translate(90px, -10px);
+    }
+    .txt > p span{font-size: 40px; color: #f00;}
+    .bene{
+      border: 2px solid#ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      padding: 3px 8px;
+      display: inline-block;
+      transform: translateY(-8px);
+      color: rgb(141, 141, 141);
+    }
+    .txt p:last-child{
+      display: flex;
+    }
+    .txt p:last-of-type a{
+      color: rgb(102, 101, 101);
+      background: rgb(238, 238, 238);
+      font-size: 12px;
+      font-weight: bold;
+      padding: 10px 20px;
+    }
+    .txt p:last-of-type a:first-of-type{
+      width: 50%;
+    }
+    .txt p:last-of-type a:last-of-type{
+      width: 50%;
+    }
+    .line02{
+      width: 100%; height: 2px;
+      background: #ccc;
+      margin: 20px 0px;
+      display: block;
+    }
+    .photo > ul >li img:checked{
+      border: 2px #f00;
+    }
+  </style>
+</head>
+<body>
+  <h2>자바스크립트 문서객체모델_속성값을 활용한 상품 미리보기 콘텐츠</h2>
+  <p>이미지 5장을 사용하여 썸네일 이미지를 클릭시 큰 사진이 보이게 하기</p>
+
+  <section class="product">
+    <article class="photo">
+      <img src="./images2/photo01.jpg" alt="" id="big_img">
+      <!--썸네일 클릭시 해당 속성 src값을 변수에 담아서 출력해본다.-->
+      <ul>
+        <li><img src="./images2/photo01.jpg" alt="썸네일" class="small"></li>
+        <li><img src="./images2/photo02.jpg" alt="썸네일" class="small"></li>
+        <li><img src="./images2/photo03.jpg" alt="썸네일" class="small"></li>
+        <li><img src="./images2/photo04.jpg" alt="썸네일" class="small"></li>
+        <li><img src="./images2/photo05.jpg" alt="썸네일" class="small"></li>
+      </ul>
+    </article>
+    <article class="txt">
+      <h3><span>오늘 마감</span><span>59개 구매</span>
+        <div class="line01"></div>
+        <p>[최대 40%쿠폰] 머렐 헤비다운 외 스포트 특가</p>
+      </h3>
+      <p><span>10%</span> 151,200원~ <a href="#" title="혜택보기" class="bene">혜택보기</a></p>
+      <p>168,000원~</p>
+      <div class="line02"></div>
+      <div class="line03"></div>
+      <p class="card">
+        <a href="#" title="적립금">구매 전 적립금 5,000원 받기</a>
+        <a href="#" title="무이자">카드 무이자 혜택보기(최대 6개월)</a>
+      </p>
+    </article>
+  </section>
+
+  <!-- <script>
+    //큰 사진 변수에 저장
+    let photo = document.querySelector('#big_img');
+    //작은 사진 변수에 저장
+    let s_img = document.querySelectorAll('.small');
+    //반복분을 통해 목록 안에 이미지를 개별적으로 선택하여 클릭이벤트를 만든다.
+    for(let i=0;i<s_img.length;i++){//변수 i초기값 0으로 .small 개수만큼 반복 실행한다. i++ 1씩 증가
+      s_img[i].addEventListener("click", function(){
+        let new_img = this.src;
+        photo.setAttribute('src', new_img);
+      });
+    }
+  </script> -->
+  <script>
+    //큰 사진 변수에 저장
+    let photo = document.querySelector('#big_img');
+    //작은 사진 변수에 저장
+    let s_img = document.querySelectorAll('.small');
+    //반복분을 통해 목록 안에 이미지를 개별적으로 선택하여 클릭이벤트를 만든다.
+    for(let i=0;i<s_img.length;i++){
+      //변수 i초기값 0
+      //.small 개수만큼 반복 실행한다.
+      //i++ 1씩 증가
+      console.log(s_img[i]);//출력하여 목록을 확인한다.
+      s_img[i].addEventListener('click',chagePic);//이미지를 각각 클릭하면 해당함수가 실행된다.
+    }
+    function chagePic(){//이미지를 변경하는 함수
+      let newPic=this.src;//사용자가 선택한 이미지 속성을 변수에 저장.
+      console.log(newPic);//이미지 src값을 출력확인.
+      //src값을 big_img의 src속성값에 대입하여 이미지가 변경되도록 한다.
+      photo.setAttribute('src',newPic);
+      
+      for(let j=0;j<s_img.length;j++){
+      s_img[j].style.border='none'//모두 서식을 제거하고
+      this.style.border='1px solid#f00'; //선택한 썸네일 이미지에 테두리를 적용한다.
+      }
+    }
+  </script>
+</body>
+</html>

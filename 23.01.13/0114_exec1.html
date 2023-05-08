@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0114_exec1</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <style>
+    *{margin: 0px;padding: 0px;}
+    ol, li, ul{list-style: none;}
+    a{color: #333;text-decoration: none;}
+    .b_wrap{
+      border:3px solid #000;
+      width:340px;height:378px;
+      background:#ff0;
+      margin:0px auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .banner{
+      display:flex;
+      position:relative;
+    }
+    .c_btn{
+      display:flex;
+      justify-content:center;
+      transform:translateY(10px);
+      position: absolute;
+      bottom: 20px;left: 120px;
+    }
+    .c_btn > li{
+      width:15px;height:15px;
+      background:#333;
+      border-radius:50%;
+      margin:0px 2px;
+      transition:0.3s;
+    }
+    .s_btn{
+      position: absolute;
+      bottom: 5px; right: 20px;
+      display: flex;
+    }
+    .s_btn li{
+      font-size: 16px;
+      color: #fff;
+      padding: 5px;
+    }
+    .on{
+      background:#f00 !important;
+      width:50px !important;
+      border-radius:10px !important;
+    }
+  </style>
+  <script src="./script/jquery-3.6.3.min.js"></script>
+  <script>
+    $(function(){
+
+      //1. 인덱스값을 저장하기 위한 변수선언;
+      let n  = $('.c_btn li').index();
+      console.log(n); //0이 나온다.
+    
+      //2. 사용자가 콘트롤 버튼을 클릭시 해당 index값 구해보기
+      $('.c_btn li').click(function(){
+        n = $(this).index();
+        console.log(n); //0, 1, 2, 3............
+
+        //이미지 너비값 구하기
+        let img_w = -($('.banner img').width()*n);
+
+        console.log(img_w); //0, 250, 500, 750............
+
+        $('.banner').animate({'left':img_w},500);
+
+        $('.c_btn li').removeClass('on'); //콘트롤 버튼 전체 서식을 변경하고
+        $(this).addClass('on');//사용자가 선택한 콘트롤 버튼만 서식을 적용
+      });
+
+
+      //3초마다 반복호출하여 슬라이드가 자동으로 움직이게 한다.
+      function autoSlide(n){
+        n=-(n*$('.banner img').width());
+        $('.banner').animate({'left':n},500);
+      }
+
+      let Timer=setInterval(function(){
+        if(n==2){
+          n=0;
+          $('.c_btn li').removeClass('on');
+          $('.c_btn li').eq(n).addClass('on');
+        }else{
+          n++;
+          $('.c_btn li').removeClass('on');
+          $('.c_btn li').eq(n).addClass('on');
+        }
+        autoSlide(n);
+      },2000);
+
+      $('.c_btn').hover(function(){
+        clearInterval(Timer);
+      },function(){
+        Timer=setInterval(function(){
+          if(n==2){
+          n=0;
+          $('.c_btn li').removeClass('on'); 
+          $('.c_btn li').eq(n).addClass('on')
+        }else{
+          n++;
+          $('.c_btn li').removeClass('on'); 
+          $('.c_btn li').eq(n).addClass('on')
+        }        
+        autoSlide(n); 
+        },2000);
+
+
+      });
+    
+      $('article .s_btn').click(function(){//정비버튼을 클릭시
+      $(this).find('i').hasClass('fa-solid fa-pause')//해당 클래스가 있는지 판단하여 있으면 아래 내용을 실행하고
+        clearInterval(Timer);//시간을 제거하여 멈추게 한다.
+      //fa-pause클래스명이 없으면 아래 내용을 실행한다.
+        $(this).find('i').hasClass('fa-solid fa-play')
+        setInterval(Timer);//시간을 다시 넣어서 움직이게 한다.
+      
+
+    });
+
+  });
+  </script>
+</head>
+<body>
+  <h2>0114_exec1</h2>
+  <article class='b_wrap'>
+    <ul class="banner">
+      <li><a href="#" title=""><img src="./images/01-1.jpg" alt="">
+      </a></li>
+      <li><a href="#" title=""><img src="./images/02-1.jpg" alt="">
+      </a></li>
+      <li><a href="#" title=""><img src="./images/03-1.jpg" alt="">
+      </a></li>
+
+    </ul>
+    <ul class="c_btn">
+      <li class="on">&nbsp;</li><li>&nbsp;</li><li>&nbsp;</li>
+    </ul>
+    <ul class="s_btn">
+      <li><i class="fa-solid fa-play"></i></li>
+      <li><i class="fa-solid fa-pause"></i></li>
+    </ul>
+  </article>
+</body>
+</html>

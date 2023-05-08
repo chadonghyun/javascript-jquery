@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./exec.css">
+  <title>1230_exec</title>
+</head>
+<body>
+  <h2>1230_exec</h2>
+  <div id="news">
+    <h3>많이 본 뉴스</h3>
+    <div class="tab">
+      <ul>
+        <li id="MBC"><a href="#" title="MBC" onclick="changeLi('mbc')">MBC</a></li>
+        <li id="portal"><a href="#" title="포털" onclick="changeLi('portal')">포털</a></li>
+        <li id="sns"><a href="#" title="SNS" onclick="changeLi('sns')">SNS</a></li>
+        <li id="utube"><a href="#" title="유튜브" onclick="changeLi('utube')">유튜브</a></li>
+      </ul>
+    </div>
+    <hr>
+    <div class="news_list">
+      <ul id="result_mbc">
+        <li><span>1</span> '연쇄살인법' 신상공개&middot;&middot;31살 이기영</li>
+        <li><span>2</span> '제2경인고속 화재' 최초 화재 운전자 입건‥"펑 소리 나더니 불"</li>
+        <li><span>3</span> 잿더미 된 차량 그대로‥이 시각 갈현고가교</li>
+        <li><span>4</span> "차 두고 뛰쳐나와" 순식간에 번진 불길에 '필사의 탈출'</li>
+        <li><span>5</span> 윤 대통령 "우월한 전쟁 준비해야" vs 野 "'안보'는 전쟁 안나게 하는 것"</li>
+        <li><span>6</span> '연쇄 살인범' 신상 공개‥31살 이기영</li>
+        <li><span>7</span> [단독] 빌라왕 뒤의 빌라왕‥끝은 어디인가?</li>
+      </ul>
+      <ul id="result_pt">
+        <li><span>1</span> '연쇄살인법' 신상공개&middot;&middot;31살 이기영</li>
+        <li><span>2</span> '제2경인고속 화재' 최초 화재 운전자 입건‥"펑 소리 나더니 불"</li>
+        <li><span>3</span> 잿더미 된 차량 그대로‥이 시각 갈현고가교</li>
+        <li><span>4</span> "차 두고 뛰쳐나와" 순식간에 번진 불길에 '필사의 탈출'</li>
+        <li><span>5</span> 윤 대통령 "우월한 전쟁 준비해야" vs 野 "'안보'는 전쟁 안나게 하는 것"</li>
+        <li><span>6</span> '연쇄 살인범' 신상 공개‥31살 이기영</li>
+        <li><span>7</span> [단독] 빌라왕 뒤의 빌라왕‥끝은 어디인가?</li>
+        <li><span>8</span> 플라스틱 방화벽 타고 빠르게 확산</li>
+        <li><span>9</span> 러, 또 대규모 공습‥벨라루스 "미사일 격추"</li>
+        <li><span>10</span> 미국서 한국산 전기차도 '리스 차량'은 보조금</li>
+      </ul>
+      <ul id="result_sns">
+        <li><span>1</span> '연쇄살인법' 신상공개&middot;&middot;31살 이기영</li>
+        <li><span>2</span> '제2경인고속 화재' 최초 화재 운전자 입건‥"펑 소리 나더니 불"</li>
+        <li><span>3</span> 잿더미 된 차량 그대로‥이 시각 갈현고가교</li>
+        <li><span>4</span> "차 두고 뛰쳐나와" 순식간에 번진 불길에 '필사의 탈출'</li>
+        <li><span>5</span> 윤 대통령 "우월한 전쟁 준비해야" vs 野 "'안보'는 전쟁 안나게 하는 것"</li>
+        <li><span>6</span> '연쇄 살인범' 신상 공개‥31살 이기영</li>
+        <li><span>7</span> [단독] 빌라왕 뒤의 빌라왕‥끝은 어디인가?</li>
+        <li><span>8</span> 플라스틱 방화벽 타고 빠르게 확산</li>
+        <li><span>9</span> 러, 또 대규모 공습‥벨라루스 "미사일 격추"</li>
+        <li><span>10</span> 미국서 한국산 전기차도 '리스 차량'은 보조금</li>
+      </ul>
+      <ul id="result_ut">
+        <li><span>1</span> '연쇄살인법' 신상공개&middot;&middot;31살 이기영</li>
+        <li><span>2</span> '제2경인고속 화재' 최초 화재 운전자 입건‥"펑 소리 나더니 불"</li>
+        <li><span>3</span> 잿더미 된 차량 그대로‥이 시각 갈현고가교</li>
+        <li><span>4</span> "차 두고 뛰쳐나와" 순식간에 번진 불길에 '필사의 탈출'</li>
+        <li><span>5</span> 윤 대통령 "우월한 전쟁 준비해야" vs 野 "'안보'는 전쟁 안나게 하는 것"</li>
+        <li><span>6</span> '연쇄 살인범' 신상 공개‥31살 이기영</li>
+        <li><span>7</span> [단독] 빌라왕 뒤의 빌라왕‥끝은 어디인가?</li>
+        <li><span>8</span> 플라스틱 방화벽 타고 빠르게 확산</li>
+        <li><span>9</span> 러, 또 대규모 공습‥벨라루스 "미사일 격추"</li>
+        <li><span>10</span> 미국서 한국산 전기차도 '리스 차량'은 보조금</li>
+      </ul>
+    </div>
+    
+    </div>
+  
+    <script>
+      function changeLi(){
+        const result= document.querySelector('#result_portal');
+        result.style.display="block";
+      }
+    </script>
+
+</body>
+</html>

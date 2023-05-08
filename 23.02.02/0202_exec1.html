@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0202_exec1</title>
+  <script src="./script/jquery-3.6.3.min.js"></script>
+  <style>
+    *{margin: 0px;padding: 0px;}
+    ul, li{list-style: none;}
+    a{text-decoration: none; color: #333;}
+    .tab_con{
+      width: 1200px; height: 618px;
+      border: 3px solid#000;
+      margin: 0px auto;
+      position: relative;
+      margin-top: 50px;
+    }
+    .tab_con h2{display: none;}
+    .tab_con > ul{
+      display: flex;
+    }
+    .tab_con > ul > li{
+      width: 20%; height: 100px;
+      text-align: center;
+    }
+    .tab_con > ul > li > a{
+      font-size: 16px;
+      display: block;
+      font-weight: bold;
+      width: 100%; height: 100%;
+    }
+    .tab_con > ul > li > a > img{
+      width: 60px; height: 50px;
+      padding-top: 10px;
+    }
+    .tab_con > ul > li:last-of-type > a > img{
+      width: 70px; height: 60px;
+    }
+    .tab_con > ul > li > a > p{
+      padding-top: 10px;
+    }
+    .tab_con > ul > li:last-of-type > a > p{
+      padding-top: 0px;
+    }
+    .tab_con .con{
+      position: absolute;
+      bottom: 0px; left: 0px;
+      width: 1200px; height: 518px;
+      background-size: 1200px 518px;
+    }
+    .c01{background-image: url(./img/01.jpg);}
+    .c02{background-image: url(./img/02.jpg);}
+    .c03{background-image: url(./img/03.jpg);}
+    .c04{background-image: url(./img/04.jpg);}
+    .c05{background-image: url(./img/05.jpg);}
+    .tab_con .con img{
+      width: 100%; height: 100%;
+      object-fit: contain;
+    }
+
+    div:not(.c01){display: none;}
+
+    .act{
+      background: orangered;
+      color: #fff;
+    }
+  </style>
+
+  <script>
+    $(function(){
+      let t_mnu = $('.tab_con li a')
+      t_mnu.click(function(){
+        $(this).addClass('act').parent().siblings().find('a').removeClass('act');
+        $(this).next().show().parent().siblings().find('div').hide();
+        
+        t_mnu.each(function(){
+          let nowSrc = $(this).find('img').attr('src');
+          if($(this).hasClass('act')){
+            $(this).find('img').attr('src', nowSrc.replace('_off', '_on'));
+          }else{
+            $(this).find('img').attr('src', nowSrc.replace('_on', '_off'));
+          }
+        }); 
+
+        return false;
+      })
+      // let t_mnu = $('.tab_con li');
+
+      // t_mnu.click(function(){
+      //   let src = $(this).find('img').attr('src');
+      //   src = src.replace('_off','_on');
+      //   console.log(src);
+
+      //   // $(this).find('img').attr('src',src);
+
+      //   $(this).find('a').addClass('act').parent().siblings().find('a').removeClass('act');
+
+      //   let n = $(this).index();
+      //   $('.tab_con li').each(function(i){//li태그에 각각 기능을 삽입한다.
+      //     if(n!=i){//만약에 선택한 요소의 인덱스번호가 같아면 아래 내용을 실행하고
+      //       $(this).find('img').attr('src',$(this).find('img').attr('src').replace('_on','_off'))
+      //     }
+      //     // }else{//인덱스 번호가 틀리다면 아래 내용을 실행
+      //     //   $(this).find('img').arrt('src',$(this).find('img').attr('src').replace('_on','_off'))
+      //     // }
+      //   });
+      // });
+    });
+  </script>
+</head>
+<body>
+  <section class="tab_con">
+    <h2>실습예제1</h2>
+    <ul>
+      <li>
+        <a href="#none" title="테마여행" class="act">
+          <img src="./img/ico_theme_zone_1_on.png" alt="">
+          <p>테마여행</p>
+        </a>
+        <div class="con c01"></div>
+      </li>
+        <!-- <img src="./img/01.jpg" alt=""> -->
+      <li>
+        <a href="#none" title="추천일정">
+          <img src="./img/ico_theme_zone_2_off.png" alt="">
+          <p>추천일정</p>
+        </a>
+        <div class="con c02"></div>
+      </li>
+        <!-- <img src="./img/02.jpg" alt=""> -->
+      <li>
+        <a href="#none" title="스크린속 제주">
+          <img src="./img/ico_theme_zone_3_off.png" alt="">
+          <p>스크린속 제주</p>
+        </a>
+        <div class="con c03"></div>
+      </li>
+        <!-- <img src="./img/03.jpg" alt=""> -->
+      <li>
+        <a href="#none" title="교통정보">
+          <img src="./img/ico_theme_zone_4_off.png" alt="">
+          <p>교통정보</p>
+        </a>
+        <div class="con c04"></div>
+        <!-- <img src="./img/04.jpg" alt=""> -->
+      <li>
+        <a href="#none" title="테마여행">
+          <img src="./img/ico_theme_zone_5_off.png" alt="">
+          <p>안전&#xB7;안심관광 가이드</p>
+        </a>
+        <div class="con c05"></div>
+      </li>
+        <!-- <img src="./img/05.jpg" alt=""> -->
+    </ul>
+  </section>
+  
+</body>
+</html>

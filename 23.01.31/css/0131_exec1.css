@@ -1,0 +1,75 @@
+@charset 'utf-8';
+*{margin: 0px;padding: 0px;}
+ol, ul, li{list-style: none;}
+a{text-decoration: none; color: #333;}
+body{
+  font-family: "맑은 고딕", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+section{
+  width:750px;
+  margin: 0px auto;
+}
+
+section h2{
+  padding-bottom: 20px;
+}
+
+.search{
+  width: 100%;
+  border: 2px solid#750270;
+  border-radius: 20px;
+  line-height: 35px;
+  margin: 20px 0px;
+}
+.search input{
+  border: none;
+  background: #fff;
+}
+.search i.fa-solid{
+  color: #750270;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.faq{}
+
+.faq dt{
+  padding: 15px 10px;
+  border-top: 1px solid#ccc;
+  border-top: 1px solid#ccc;
+  /* font-weight: 500; */
+  clear: both;
+  cursor: pointer;
+}
+
+.faq dt span{
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #750270;
+  margin-right: 7px;
+}
+
+.faq dt i.fas{
+  float: right;
+  font-size: 24px;
+}
+
+.faq > dd{
+  background: rgb(245, 245, 245);
+  display: none;
+  padding: 10px 29px;
+}
+
+.faq > dd > img{
+  width: 100%;
+  object-fit: cover;
+}
+
+/* 제목에 적용되는 아이콘 */
+.act01{transform: rotate(180deg);}
+.act02{transform: rotate(-180deg);}

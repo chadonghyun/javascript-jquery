@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0111_exec</title>
+  <style>
+    h2{display: none;}
+    .img_box{
+      width: 460px;height: 283px;
+      border: 3px solid#333;
+      box-sizing: border-box;
+      position: relative;
+      justify-content: end;
+      overflow: hidden;
+    }
+    .jobs{
+      position: absolute;
+      bottom: -500px; left: 141px;
+    }
+    .jobs img{
+      display: block;
+    }
+    .jobs_text{
+      position: absolute;
+      left: -200px; top: 50px;
+    }
+  </style>
+    <!-- 제이쿼리 라이브러리 -->
+    <script src="./script/jquery-3.6.3.min.js"></script>
+    <!-- 제이쿼리 UI라이브러리 -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+  <script>
+    $(function(){
+      $('.jobs').animate({'bottom':'0px'},1000);
+      $('.jobs_text').animate({'left':'0px'},1000);
+    });
+  </script>
+</head>
+<body>
+  <article class="img_box">
+    <h2>0111_exec</h2>
+    <div class="jobs_text">
+      <img src="./images/jobs_text.gif" alt="">
+    </div>
+    <div class="jobs">
+      <img src="./images/jobs.png" alt="">
+    </div>
+  </article>
+</body>
+</html>

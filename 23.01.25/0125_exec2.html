@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0125_exec2</title>
+  <script src="./script/jquery-3.6.3.min.js"></script>
+  <style>
+    *{margin: 0px;padding: 0px;}
+    li, ul, ol{list-style: none;}
+    a{text-decoration: none; color: #333;}
+    .banner{
+      position: relative;
+      width: 100%; height: 450px;
+      margin-top: 150px;
+    }
+    .banner nav{
+      display: block;
+      background: #fff;
+      position: absolute;
+      top: 45px; right: 300px;
+    }
+    .banner nav li{
+      border-top: 2px solid#ccc;
+      box-sizing: border-box;
+      display: block;
+    }
+    .banner nav li:first-child{border: none;}
+    .banner nav a{
+      font-size: 12px;
+      display: block;
+      padding: 20px;
+    }
+    .banner nav a:hover::after{
+      content: "";
+      border: 2px solid#6896ec;
+      width: 127px; height: 56px;
+      position: absolute;
+      left: -1px; 
+      margin-top: -22px;
+    }
+    .banner nav li:nth-child(3) a:hover::after{
+      width: 127px; height: 71px;
+      margin-top: -37px;
+    }
+    /* .banner nav li:hover{
+      border: 2px solid#f0f;
+      margin: -2px;
+      z-index: 9999;
+    } */
+  </style>
+  <script>
+    $(function(){
+
+      $('.banner nav li a').mouseenter(function(){
+        let url=$(this).attr('href');
+        console.log(url);
+        $('.banner div img').attr('src', url);
+      });
+
+      
+
+
+    });
+  </script>
+</head>
+<body>
+  <article class="banner">
+    <div>
+      <img src="./images02/banner_img1.jpg" alt="큰사진">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="./images02/banner_img1.jpg" title="배너이미지1">인기간식</a></li>
+        <li><a href="./images02/banner_img2.jpg" title="배너이미지2">바닐라코</a></li>
+        <li><a href="./images02/banner_img3.jpg" title="배너이미지3">직수입<br>신년 빅세일</a></li>
+        <li><a href="./images02/banner_img4.jpg" title="배너이미지4">프렌치카페</a></li>
+        <li><a href="./images02/banner_img5.jpg" title="배너이미지5">설연휴 끝! 특가</a></li>
+        <li><a href="./images02/banner_img6.png" title="배너이미지6">생필품 쟁여두기</a></li>
+      </ul>
+    </nav>
+  </article>
+</body>
+</html>

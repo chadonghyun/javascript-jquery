@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>쿠팡실습예제</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <style>
+    .banner{
+      width: 100%;
+      margin: 0px auto;
+      display: flex;
+    }
+    i.fas{
+      color: #000;
+      float: right;
+      font-size: 50px;
+      padding: 10px 10px 5px 20px;
+    }
+  </style>
+  <script src="./script/jquery-3.6.3.js"></script>
+  <script>
+    $(document).ready(function(){
+      let btn1=$('#btn1');
+      btn1.click(function(){
+        $('.banner').slideUp();
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="banner">
+    <img src="./images/coupang_02.jpg" alt="쿠팡배너">
+    <i class="fas fa-times" id="btn1"></i>
+  </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제_연산자를 활용한 사직연산 모바일 계산기</title>
+</head>
+<body>
+  <h2>실습예제_연산자를 활용한 사직연산 모바일 계산기</h2>
+
+  <article>
+    <!--연산결과를 출력하는 박스-->
+    <input type="text" id="calOutput">
+    <div class="btn_box">
+      <p>
+      <input type="button" class="btn" value="1" onclick="cal(1)">
+      <input type="button" class="btn" value="2" onclick="cal(2)">
+      <input type="button" class="btn" value="3" onclick="cal(3)">
+      <input type="button" class="btn" value="+" onclick="cal('+')">
+      </p>
+      <p>
+      <input type="button" class="btn" value="4" onclick="cal(4)">
+      <input type="button" class="btn" value="5" onclick="cal(5)">
+      <input type="button" class="btn" value="6" onclick="cal(6)">
+      <input type="button" class="btn" value="-" onclick="cal('-')">
+      </p>
+      <p>
+      <input type="button" class="btn" value="7" onclick="cal(7)">
+      <input type="button" class="btn" value="8" onclick="cal(8)">
+      <input type="button" class="btn" value="9" onclick="cal(9)">
+      <input type="button" class="btn" value="*" onclick="cal('*')">
+      </p>
+      <p>
+      <input type="button" class="btn" value="0" onclick="cal(0)">
+      <input type="button" class="btn" value="=" onclick="result()">
+      <input type="button" class="btn" value="/" onclick="cal('/')">
+      <input type="button" class="btn" value="." onclick="cal('.')">
+        <p>
+          <input type="button" value="clear" class="btn" onclick="init()">
+        </p>
+
+      </p>
+    </div>
+
+
+  </article>
+
+  <script>
+    //계산기 스크립트 내용 작성하기
+    //1. 출력박스 변수 선언
+    let res=document.getElementById ('calOutput');
+
+    //2. 버튼을 클릭시 버튼에 들어간 매개변수값을 함수에 넘겨줘서 연산처리하게 한다.
+    function cal(op){
+      // console.log(op);
+      //출력결과 박스에 누른 값들을 표시함.
+      let outputValue=res.value+op;//연산식1
+
+      //숫자와 연산기호 모두 보이게함.
+      res.value=outputValue;
+    }
+
+    //3. 사용자가 =버튼을 클릭시 result()함수가 실행되게 하여 연산결과를 input태그에 출력하게 한다.
+    function result(){
+      //연산된 결과값을 input태그에 나오게 함.
+      res.value=eval(res.value);
+    }
+
+    //4. clear버튼을 클릭하면 id claOutput에 들어간 문자열을 모두 삭제한다.
+    function init(){
+      res.value="";
+    }
+  </script>
+
+</body>
+</html>

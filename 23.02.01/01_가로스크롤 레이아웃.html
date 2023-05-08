@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01가로스크롤 레이아웃</title>
+  <link rel="stylesheet" href="./css/layout.css" type="text/css">
+  <!-- 제이쿼리 ui라이브러리 -->
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="./script/jquery-3.6.3.min.js"></script>
+
+  <script>
+    $(function(){
+
+      // 가로스크롤값 구하기
+      $(window).scroll(function(){
+        let sPos = $(this).scrollLeft();
+        $('.status').html(sPos);//화면에 출력하기
+      });
+
+      //마우스 휠 이벤트를 사용하여 가로스크롤 되게 하기
+      $('main section').each(function(){
+         // 개별적으로 Wheel 이벤트 적용
+        $(this).on('mousewheel',function(e){
+          
+          var delta = 0;
+          var moveTop = null;
+          var boxMax = $("main section").length - 1;
+          var winEvent = "";
+          console.log(boxMax);
+          
+          if(!winEvent) { //만약에 이벤트가 발생하지 않는다면
+            winEvent = window.event; //이벤트는 없다
+          }
+          if(winEvent.wheelDelta) { //만약에 이벤트에서 휠데이터값이 있다면
+            delta = winEvent.wheelDelta / 120; //데이터값을 저장
+            if(window.opera) {
+                delta = -delta;
+            }
+          }          
+          else if(winEvent.detail) { //그렇지 않으면
+            delta = -winEvent.detail / 3; 
+          }
+                
+          // 마우스휠을 위에서 아래로 이동(처음에서 다음박스로 이동)
+          if(delta < 0) {
+              // 마지막 BOX 보다 순서값이 작은 경우에 실행
+              if($(this).index() < boxMax) {
+                  console.log("▼");
+                  if($(this).next() != undefined) {
+                      moveTop =$(this).next().offset().left;
+                  }
+              }
+              // 마지막 section보다 더 오른쪽으로 이동하려고 하는 경우 알림창 출력
+              else {
+                  // alert("마지막 페이지 입니다.");
+                  return false;
+              }
+          }
+          // 마우스휠을 아래에서 위로 이동( 뒤에서 앞으로 이동)
+          else {
+              // 첫번째 section보다 순서값이 큰 경우에 실행
+              if($(this).index() > 0) {
+                  console.log("▲");
+                  if($(this).prev() != undefined) {
+                      moveTop =$(this).prev().offset().left;
+                  }
+              }
+              // 첫번째 section보다 더 위로 이동하려고 하는 경우 알림창 출력
+              else {
+                  // alert("첫번째 페이지 입니다.");
+                  return false;
+              }
+          }
+               //화면 이동 0.3초(300)
+              $("html,body").stop().animate({scrollLeft : moveTop + "px"}, 300);
+
+          });
+        });
+
+
+      let mnu = $('.gnb ul li a');
+      mnu.click(function(){
+        $('.gnb ul li a').removeClass('on');
+        $(this).addClass('on');
+
+        //선택한 a요소의 href속성값을 출력해본다.
+        let id_name = $(this).attr('href');
+        console.log(id_name);//car1, car2, car3, car4
+
+        //car1, car2, car3, car4의 왼쪽에서 떨어진 값을 출력
+        let secOffset = $(id_name).offset().left;
+        console.log(secOffset);
+
+        //각 해당하는 영역을 왼쪽 끝에 애니메이션하면서 맞춤
+        $('html, body').animate({scrollLeft:secOffset},500);
+
+        //영역에 맞추어 목록 변화
+        let n = $('.gnb li').index();
+        console.log(n);
+
+        return false;
+      });
+
+      let n = $('.gnb li a');
+      // console.log(n);
+      $(n).each(function(i){
+        if(n===i){
+          $('.gnb li a.on').removeClass('on');
+          $(this).addClass('on');
+        }
+      })
+
+    });
+  </script>
+
+</head>
+<body>
+  <span class="status"></span>
+
+  <!-- 헤더영역 -->
+  <header>
+    <nav class="gnb">
+      <ul>
+        <li><a href="#car1" title="Mini Cooper" class="on">Mini Cooper</a></li>
+        <li><a href="#car2" title="Tesla">Tesla</a></li>
+        <li><a href="#car3" title="Lamborghini">Lamborghini</a></li>
+        <li><a href="#car4" title="Porsche">Porsche</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 메인영역 -->
+  <main id="cont">
+
+    <section id="car1">
+      <h2>Mini Cooper</h2>
+      <p>영국의 소형차 브랜드다. 원래는 브리티시 모터 컴퍼니(BMC)산하에서 생산한 자동차였다가 브리티시 레일랜드, 그리고 BMW를 거쳐가면서 별도의 브랜드가 되었다.</p>
+    </section>
+
+    <section id="car2">
+      <h2>Tesla</h2>
+      <p>미국의 글로벌 IT 기업. 전기차 부문이 주력 사업이지만 AI를 필두로한 소프트웨어 분야도 업계 최상위권으로 평가 받는다. 로봇 산업에도 뛰어들며 더이상 전기차 회사라고 단정지어 부르기 어려워졌다. 본사는 미국 텍사스 오스틴에 두고 있다. 설립자인 일론 머스크가 테크노킹을 맡고 있다.</p>
+    </section>
+
+    <section id="car3">
+      <h2>Lamborghini</h2>
+      <p>1963년에 페루치오 람보르기니(Ferruccio Lamborghini, 1916년 4월 28일 ~ 1993년 2월 20일)에 의해 설립된 이탈리아의 트랙터, 스포츠카 생산 기업이며 페라리를 뛰어넘는 성능의 차량을 만들겠다는 일념 하나로 시작하여, 현재까지도 살벌한 라이벌 관계를 유지하며, 지금은 맥라렌, 포르쉐, 그리고 페라리와 함께 스포츠카, 슈퍼카를 대표하는 4대 브랜드중 하나이다.</p>
+    </section>
+
+    <section id="car4">
+      <h2>Porsche</h2>
+      <p>폭스바겐 그룹 산하의 독일 자동차 제조사로, 스포츠카, 슈퍼카와 더불어 세단, SUV등을 생산한다.
+        포르쉐 911이 간판 모델이자 상징적인 모델이지만, 2000년대 들어 포르쉐 911보다 포르쉐 카이엔, 포르쉐 파나메라가 더 잘 팔린다.</p>
+    </section>
+  </main>
+
+  <!-- 푸터영역 -->
+  <footer>
+    <address>
+      copyright&copy;2023 가로스크롤 레이아웃 allright reserved.
+    </address>
+  </footer>
+</body>
+</html>

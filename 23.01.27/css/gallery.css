@@ -1,0 +1,141 @@
+@charset "utf-8";
+
+body{
+  font-family: "맑은 고딕", Arial, sans-serif;
+  font-size: 12px;
+  color: #333;
+}
+
+a{text-decoration: none; color: #333;}
+
+h2, p, .desc li{padding: 5px;}
+
+main{margin-top: 50px;}
+
+.gallery{
+  width: 1240px;
+  margin: 0px auto;
+  border: 3px solid#2cacf7;
+}
+
+.gallery h2{
+  text-align: center;
+  line-height: 60px;
+  font-size: 24px;
+}
+
+.g_navi{
+  height: 50px;
+  border-bottom:3px solid#000 ;
+}
+
+.g_navi > ul{
+  display: flex;
+  justify-content: center;
+  /* gap: 20px; */
+}
+
+.g_navi > ul > li{
+  margin: 0px 10px;
+}
+
+.g_navi > ul > li > a{
+  font-size: 16px;
+  background: #000;
+  color: #fff;
+  padding: 4px 14px 5px 14px;
+  border-radius: 20px;
+  line-height: 40px;
+  text-transform: uppercase;
+}
+
+.act{background: #2cacf7 !important;}
+
+/* 갤러리 이미지 서식 */
+.g_list{
+  display: flex;
+  margin: 20px;
+  flex-wrap: wrap;/*다음줄로 자동넘김*/
+}
+
+.g_list > li{
+  width: 25%;height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.g_list > li > a:hover img{
+  border-radius: 150px 0px 100px 0px;
+  transform: scale(1.1) rotate(4deg);
+}
+
+.g_list > li > a img{
+  width: 100%;
+  transition: 0.3s;
+}
+
+.g_list > li > a span{
+  display: block;
+  background: rgba(0, 0, 0, 0.7);
+  line-height: 40px;
+  color: #fff;
+  position: absolute;
+  bottom: -40px ;left: 0px; 
+  width: 100%;
+  text-indent: 10px;
+}
+
+.modal{
+  width: 100%; height: 100%;
+  background:rgba(0, 0, 0, 0.7);
+  position: fixed;
+  text-align: center;
+  z-index: 9999;
+  top: 0px; left: 0px;
+}
+
+.modal > .center{
+  max-width: 600px;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal img{width: 100%;}
+
+.modal i.fas{cursor: pointer;}
+
+.modal i.fa-times{
+  position: fixed;
+  top: -45px; right: -40px;
+  font-size: 40px;
+  color: #fff;
+}
+
+.modal i.fa-angle-right{
+  position: fixed;
+  top: 50%; right: -70px;
+  transform: translateX(-50%);
+  font-size: 50px;
+  color: #fff;
+}
+
+.modal i.fa-angle-left{
+  position: fixed;
+  top: 50%; left: -40px;
+  transform: translateX(-50%);
+  font-size: 50px;
+  color: #fff;
+}
+
+.modal > .center h3{
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.modal > .center span{
+  font-size: 20px;
+  color: #fff;
+  line-height: 40px;
+}

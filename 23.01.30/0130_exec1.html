@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0130_exec1(에뛰드 모바일 웹 네이비게이션)</title>
+  <!-- <link rel="stylesheet" href="./css/0130_exec1.css" type="text/css"> -->
+  <link rel="stylesheet" href="./css/0130_exec2.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <script src="./script/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+  <h2>0130_exec1</h2>
+  
+  <div id="wrap">
+    
+    <header>
+
+      <h1>
+        <a href="m_index.html" title="메인페이지 바로가기"></a>
+        <img src="./images/logo.png" alt="상단로고">
+      </h1>
+
+      <div id="toggle">
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+
+      </div>
+
+      <div class="find">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    </header>
+
+  <!-- 글로벌 내비게이션 -->
+  <nav class="gnb">
+
+    <ul>
+      <li><a href="#" title="">menu01</a></li>
+      <li><a href="#" title="">menu02</a></li>
+      <li><a href="#" title="">menu03</a></li>
+      <li><a href="#" title="">menu04</a></li>
+      <li><a href="#" title="">menu05</a></li>
+      <li><a href="#" title="">menu06</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- 메인영역 -->
+    <main>
+      <article class="slide">
+        <ul>
+          <li><a href="#none"><img src="./images/slide01_01.jpg" alt="이벤트1"></a></li>
+          <li><a href="#none"><img src="./images/slide02_02.jpg" alt="이벤트2"></a></li>
+          <li><a href="#none"><img src="./images/slide03_03.jpg" alt="이벤트2"></a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer>
+      <address>coptright2002&copy; 에뛰드 하우스 allright reserved.</address>
+    </footer>
+
+
+    <script>
+      $(function(){
+
+        //1. 토글버튼 변수
+        let t_btn = $('#toggle');
+        let t_n = 1;
+
+        t_btn.click(function(){
+          $(this).find('span').first().toggleClass('act01');
+          $(this).find('span').eq(1).toggleClass('act02');
+          $(this).find('span').last().toggleClass('act03');
+
+          $('#wrap').toggleClass('wrap_pos');
+
+          $('body').toggleClass('on1')
+        });
+
+        //2. 스크롤값이 0보다 크면
+        $(window).scroll(function(){
+          let sPos =$(this).scrollTop(); //브라우저의 세로 스크롤값
+          console.log(sPos);//콘솔모드에 출력한다.
+          if(sPos>0){
+            $('#toggle').addClass('on');
+          }else{
+            $('#toggle').removeClass('on'); 
+          }
+        });
+
+
+
+
+        //3. 슬라이드
+        let slide = $('.slide ul')
+        let img_w = $('.slide img').width();
+        let num = 1
+
+        $('.slide ul > li:last-child').insertBefore('.slide ul > li:first-child');
+      slide.css('margin-left',-img_w);
+
+        function moveLeft(){
+          slide.animate({'margin-left':-img_w*2},700,function(){
+            $('.slide ul > li:first-child').insertAfter('.slide ul > li:last-child');
+            slide.css('margin-left',-img_w);
+            if(num==3){
+              num=1;
+            }else{
+              num++;
+            }
+          })
+        }
+        let Timer=setInterval(moveLeft,3000);
+      
+      });
+    </script>
+  </div>
+</body>
+</html>

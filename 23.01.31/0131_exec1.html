@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0131_exec1</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="./css/0131_exec1.css" type="text/css">
+  <script src="./script/jquery-3.6.3.min.js"></script>
+  <script>
+    $(function(){
+      let q=$('.faq dt')
+
+      q.click(function(){
+        $(this).next().toggle().siblings('dd').hide();
+        if($(this).find('i.fas').hasClass('act01')){
+          $(this).find('.act01').removeClass('act01');
+        }else{
+          $(this).find('i.fas').addClass('act01').parent().siblings().find('i.fas').removeClass('act01');
+        }
+
+      });
+
+
+    });
+  </script>
+
+</head>
+<body>
+  <section>
+
+    <div class="search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" placeholder="검색어를 입력해주세요." >
+    </div>
+
+    <h2>자주하는 질문 TOP10</h2>
+
+    <dl class="faq">
+      <dt><span>1</span> <strong>반품 신청은 어떻게 하나요?</strong><i class="fas fa-angle-down"></i></dt>
+      <dd><img src="./images/img1.jpg" alt="반품 신청"></dd>
+      <dt><span>2</span> <strong>주문을 취소하고 싶어요.</strong><i class="fas fa-angle-down"></i></dt>
+      <dd><img src="./images/img2.jpg" alt="주문 취소"></dd>
+      <dt><span>3</span> <strong>리뷰는 어떻게 작성하나요?</strong><i class="fas fa-angle-down"></i></dt>
+      <dd><img src="./images/img3.png" alt="리뷰 작성"></dd>
+      <dt><span>4</span> <strong>반품 시 별도 택배비가 부과되나요?</strong><i class="fas fa-angle-down"></i></dt>
+      <dd>
+        <p>1. 반품 택배비가 무료인 경우<br>
+        - 수령한 상품이 파손/불량이거나 상품이 잘못배송된 경우</p>
+        
+        <p>2. 반품 택배비가 고객 부담인 경우<br>
+        - 구입합 상품 상세설명의 교환/반품정보에 배송비 고객부담이라고 표기되어 있는 상품 중 고객변심에 의한 반품을 요청하는 경우</p>>
+      </dd>
+      <dt><span>5</span> <strong>원하는상품 방송시간을 문자로 받고 싶어요.</strong><i class="fas fa-angle-down"></i></dt>
+      <dd><img src="./images/img4.jpg" alt="방송시간"></dd>
+      <dt><span>6</span> <strong>회원 탈퇴는 어떻게 하나요?</strong><i class="fas fa-angle-down"></i></dt>
+      <dd>
+        <p>CJ온스타일 PC 로그인 후 마이존 > [회원 탈퇴] 메뉴를 통해 고객님께서 직접 처리할 수 있습니다.</p>
+
+        <p>회원탈퇴 PC바로가기</p>
+        
+        <p>
+        [회원 탈퇴시 유의점]<br><br>
+        - CJ ONE 통합회원의 경우 CJ ONE사이트에서 탈퇴(약관동의철회)처리를 진행하셔야합니다.<br>
+        - 회원 아이디로 등록되어 있는 적립금, 할인쿠폰, CJ ONE 포인트는 자동 소멸됩니다.<br>
+        - 회원 탈퇴 시 CJ온스타일이 운영하고 있는 모든 사이트에서 동시 회원탈퇴 됩니다.<br>
+        - 회원 탈퇴 후 재가입 하는 경우에도 신규가입혜택(할인쿠폰 등)은 적용되지 않으며 신규회원 대상 이벤트에 응모할 수 없습니다.</p>
+      </dd>
+      <dt><span>7</span> <strong>배송지를 변경 할 수 있나요?</strong><i class="fas fa-angle-down"></i></dt>
+      <dd><img src="./images/img5.jpg" alt="배송지 변경"></dd>
+      <dt><span>8</span> <strong>교환 신청은 어떻게 하나요?</strong><i class="fas fa-angle-down"></i></dt>
+      <dd><img src="./images/img6.jpg" alt="교환 신청"></dd>
+      <dt><span>9</span> <strong>CJ온스타일 앱(어플리케이션)은 어떻게 설치하나요?</strong><i class="fas fa-angle-down"></i></dt>
+      <dd><img src="./images/img7.jpg" alt="온스타일 앱"></dd>
+      <dt><span>10</span> <strong>결제수단 변경하려면 주문취소하고 재주문하나요?</strong><i class="fas fa-angle-down"></i></dt>
+      <dd>
+        <p>상품을 취소하지 않고도 다른 결제수단으로 결제 변경이 가능합니다.<br>
+        - [CJ온스타일 로그인] > [마이존] > [주문/배송 조회] > [결제변경]<br>
+        : 당일 주문 건에 한하여 23시30분까지 신용카드로 결제변경이 가능합니다.</p>
+        
+        <p>- 신용카드 외 다른 결제수단으로 변경을 원하는 경우<br>
+        : 당사 고객센터(1644-2525)로 연락주시면 결제변경 도와드리겠습니다.</p>
+        
+        <p>주문/배송조회 PC 바로가기<br>
+        주문/배송조회 모바일 바로가기</p>
+      </dd>
+    </dl>
+
+  </section>
+</body>
+</html>

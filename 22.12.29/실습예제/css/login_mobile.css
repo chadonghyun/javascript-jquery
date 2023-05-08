@@ -1,0 +1,232 @@
+@charset "utf-8";
+
+@media screen and (max-width:767px) {
+  label[for=toggle], .cart_btn{display: block;}
+
+  header{
+    height: 60px;
+    position: relative;
+    background: #4b4b4b;
+  }
+  .h_top > h1{
+    width: 130px;
+    margin: 0px auto;
+  }
+  .h_top > h1 img{
+    padding-top: 4px;
+    width: 100%;
+  }
+
+/* 전체메뉴, 카트버튼 위치서식 */
+.total_btn, .cart_btn{
+  position: absolute;
+  padding: 10px;
+}
+.total_btn{left: 10px; top: 7px;}
+.cart_btn{right: 10px; top: 8px;}
+.fa-bars, .fa-shopping-cart{
+  font-size: 24px;
+  color: #fff;
+}
+/* 네이베이션 서식 */
+.h_bottom{
+  width: 100%; height: 100%;
+  position: fixed;top:0px;left: -100%;
+  background-color: #333;
+  z-index: 9999;
+  transition: 0.5s;
+}
+.h_bottom .c_btn{
+  position: fixed; right:100%; top:2%;
+  color: #fff;
+  font-size: 2.2rem;
+  padding: 6px;
+  transition: 0.5s;
+}
+fieldset{
+  position: fixed!important;
+  width:100%;
+  left: -100%; top: 3%;
+  z-index: 99999;
+  text-align: center;
+  transition: 0.5s;
+}
+.gnb{
+  width: 100%;
+  position: absolute;
+  left: 0px; top: 13%;
+  z-index: 99999;
+  transition: 0.5s;
+}
+.gnb ul{
+  padding: 0px 1.2%;
+}
+.gnb ul li{
+  border-bottom: 1px solid#ccc;
+  text-indent: 20px;
+}
+.gnb ul li a{
+  color: #fff;
+  line-height: 220%;
+  font-size: 1rem;
+  display: block;
+}
+.lnb{
+  width: 100%;
+  position: fixed;
+  top: 420px; left:-100%;
+  z-index: 99999;
+  transition: 0.5s;
+}
+.lnb ul{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.lnb ul li{
+  width: 44%;
+  margin: 0px 2px 4px 2px;
+  display: inline-block;
+  background: #ccc;
+  text-align: center;
+}
+.lnb ul li a{
+  line-height: 40px;
+  display: block;
+}
+
+/* 전체 메뉴 클릭시 닫기, 검색, lnb, h_bottom */
+#toggle:checked + header > .h_bottom .c_btn{
+  right: 5%;
+}
+#toggle:checked + header > .h_top fieldset{
+  left: 0px;
+}
+#toggle:checked + header > .h_bottom{
+  left: 0px;
+} 
+#toggle:checked + header > .h_top .lnb{
+  left: 0px;
+}
+.sub{display: none;}
+
+/* 로그인 서식 */
+main > fieldset{
+  text-align: center;
+  width: 320px;
+  margin: 0px auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+#id_txt, #pw_txt{
+  width: 320px;height: 40px;
+  text-align: center;
+  margin: 10px;
+  background: rgb(236, 228, 228);
+  border: none;
+  font-weight: bold;
+  border-radius: 3px;
+}
+.btn01{
+  width: 325px; height: 45px;
+  background: #f00;
+  color: #fff;
+  text-align: center;
+  border: none;
+  margin: 15px;
+  border-radius: 3px;
+}
+.naver_longin{
+  background: rgb(34, 190, 34);
+  color: #fff;
+  border-radius: 3px;
+}
+.membership{
+  font-size: 14px;
+  margin: 0 auto;
+  display: flex;
+  width: 320px;
+  justify-content: space-between;
+}
+.kakao_longin{background: yellow;}
+.naver_longin, .kakao_longin{
+  margin: 15px;
+  padding: 15px;
+  border: none;
+  width: 320px;
+  border-radius: 3px;
+}
+
+
+
+
+
+
+
+/* 푸터영역 */
+  footer{height: auto;}
+  .f_nav{    
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: stretch;
+  }
+  .f_nav > ul {
+    order: 2;
+    width: 100%;
+  }
+  .f_nav > dl {
+    order: 1;
+    width: 100%;
+  }
+  .f_nav dl dd > span{padding-left: 10px;}
+  .f_lnb li a{
+    color: #fff;
+    font-size: 0.875rem;
+  }
+  .f_info{
+    width: 100%;
+    padding: 50px 0px 15px 0px;
+  }
+  .f_info dl{
+    flex-wrap: wrap-reverse; /*순서 뒤바꿈*/
+  }
+  .f_info dd{
+    font-size: 0.9rem;
+    line-height: 240%;
+  }
+  .number{font-size: 1.6rem;}
+  .f_info dl dd:first-of-type{width:50%}
+  .f_info dl dd:nth-of-type(2){width:50%}
+  .f_info dl dd:nth-of-type(2) ~ dd{
+    width:100%;
+    text-align: center;
+  }
+  address{
+    width: 100%;
+    display: block;
+  }
+  address .a_info, address .a_pay{
+    width: 100%;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
